@@ -1,4 +1,4 @@
-package test;
+package complexNumber;
 
 import complexNumber.ComplexNumber;
 import org.junit.jupiter.api.Test;

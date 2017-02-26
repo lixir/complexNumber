@@ -1,6 +1,7 @@
 package complexNumber;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
@@ -17,8 +18,8 @@ public class QuadraticEquation {
         this.c = c;
     }
 
-    public ArrayList<ComplexNumber> square(){
-        ArrayList<ComplexNumber> result = new ArrayList<>();
+    public List<ComplexNumber> square(){
+        List<ComplexNumber> result = new ArrayList<>();
         double discriminant = b * b - (4 * a *c);
         ComplexNumber x1 = new ComplexNumber (-b / (2 * a), sqrt(abs(discriminant)) / (2 * a));
         ComplexNumber x2 = new ComplexNumber (-b / (2 * a), -sqrt(abs(discriminant)) / (2 * a));
@@ -27,9 +28,9 @@ public class QuadraticEquation {
         return result;
     }
 
-    public ArrayList<ComplexNumber> biquadratic(){
-        ArrayList<ComplexNumber> list = this.square();
-        ArrayList<ComplexNumber> result = new ArrayList<>();
+    public List<ComplexNumber> biquadratic(){
+        List<ComplexNumber> list = this.square();
+        List<ComplexNumber> result = new ArrayList<>();
         result.add(list.get(0).complexSqrt());
         result.add(list.get(0).complexSqrt().multipli(-1));
         result.add(list.get(1).complexSqrt());
