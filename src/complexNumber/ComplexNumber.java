@@ -9,8 +9,8 @@ import static java.lang.Math.sqrt;
  * Created by lixir on 09.02.17.
  */
 public final class ComplexNumber {
-    private double x; //действительная часть valid
-    private double y; //мнимая часть imaginary
+    private final double x; //действительная часть valid
+    private final double y; //мнимая часть imaginary
 
     public ComplexNumber ( double x, double y) {
         this.x = x;
@@ -39,15 +39,14 @@ public final class ComplexNumber {
         if (this == obj) return true;
         if (obj instanceof ComplexNumber){
             ComplexNumber other = (ComplexNumber) obj;
-            if (this.x >= other.x - 1e-10 && this.x <= other.x + 1e-10
-                    && this.y >= other.y - 1e-10 && this.y <= other.y + 1e-10) return true;
+            if (abs(this.x - other.x) <= 1e-10 && abs(this.y - other.y) <= 1e-10) return true;
         }
         return false;
     }
 
     @Override
     public int hashCode(){
-        return (int) (this.x * 30 + this.y);
+        return Double.valueOf(this.x * 31).hashCode() + Double.valueOf(this.y).hashCode();
     }
 
     public ComplexNumber plus(ComplexNumber other) {
@@ -87,7 +86,6 @@ public final class ComplexNumber {
     public ComplexNumber complexSqrt(){
         double x = sqrt((this.modulus() + this.x)/2);
         double y = sqrt((this.modulus() - this.x)/2);
-        double temp = 0.0;
         if (this.y != 0) y *= compare(0, this.y);
         return new ComplexNumber(x, y);
     }
