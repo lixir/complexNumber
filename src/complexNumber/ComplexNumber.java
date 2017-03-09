@@ -46,7 +46,7 @@ public final class ComplexNumber {
 
     @Override
     public int hashCode(){
-        return Double.valueOf(this.x * 31).hashCode() + Double.valueOf(this.y).hashCode();
+        return Double.valueOf(this.x).hashCode() * 31 + Double.valueOf(this.y).hashCode();
     }
 
     public ComplexNumber plus(ComplexNumber other) {
